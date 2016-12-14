@@ -1,0 +1,57 @@
+(function() {
+try {
+    (function(){
+	/*
+	https://ds.reson8.com/insights.gif?rand=[RANDOM_NUMBER]&t=0&pixt=Other&advkey=0013000001MCq0HAAT&opptykey=SMED0615A&evkey=129081&evtype=custom&fl=F1
+	*/
+
+	var mm_ri = String( Math.random() );
+	mm_ri = mm_ri.replace( /0\./g,'' );
+
+	var mm_protocol = location.protocol;
+	if ( mm_protocol != 'http:' && mm_protocol != 'https:' ){ mm_protocol = 'http:'; }
+
+	var mm_el0 = document.createElement('img');
+	var url0 = 'ds.reson8.com/insights.gif?rand=[RANDOM_NUMBER]&t=0&pixt=Other&advkey=0013000001MCq0HAAT&opptykey=SMED0615A&evkey=129081&evtype=custom&fl=F1';
+	url0 = url0.replace("\[RANDOM_NUMBER\]", mm_ri);
+	mm_el0.width = 1;
+	mm_el0.height = 1;
+	mm_el0.src = mm_protocol + '//' + url0;
+
+
+})();
+//used to sync advertiser without leaking referer to final destination
+(function() {
+    try {
+	var frm = document.createElement('iframe');
+	frm.style.visibility = 'hidden';
+	frm.style.display = 'none';
+	frm.src = "http://pixel.mathtag.com/sync/iframe?mt_uuid=9bf157e5-5a1f-4000-874f-b2dbab8f5869&no_iframe=1&mt_adid=146031";
+	frm.setAttribute("id", "mm_sync_back_ground");
+	var trys = 0;
+        var interval = setInterval(function(){
+            if (trys++ < 20 && interval && !document.getElementById("mm_sync_back_ground")) {
+                if (document.body) {
+                    if (interval) {
+                        clearInterval(interval);
+                        interval = 0;
+                    }
+                    document.body.appendChild(frm);
+                }
+            }
+        }, 100);
+    }
+    catch(ex)
+    {
+	document.createElement("img").src="//pixel.mathtag.com/error/img?error_domain=synciframe&what="+encodeURIComponent(ex.message);
+    }
+})();
+
+}
+catch(ex)
+{
+   document.createElement("img").src="//pixel.mathtag.com/error/img?error_domain=wrap&what="+encodeURIComponent(ex.message);
+}
+})();
+
+window.MathIDSet = 'LOxR08t+Z1D7L2Jpz3aR2ve7McODMEZ2oMj68uDEmZ7sll7O9rGQqdrxqg4gEDfmSX6if8LNu1p5JDJ5vx3yVRJ2ibWUtz6ZHVgQeIePI8o=';
